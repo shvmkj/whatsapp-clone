@@ -26,12 +26,11 @@ io.on('connection',(socket)=>{
         }else{
             users[data.username]=data.password
             login(socket,data.username)
-        }
-        
-        
+        }              
         console.log(data)
     })
     socket.on('message',(data)=>{
+        data.from = socketMap[socket.id]
         if(data.to){
             console.log(data.to)
             io.to(data.to).emit("msg_rcvd",data)

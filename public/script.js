@@ -18,7 +18,9 @@ $('#sendMessage').click(()=>{
     })
 })
 socket.on("msg_rcvd",(data)=>{
-    $('#ulMsgs').append($('<li>').text(data.msg))
+    $('#ulMsgs').append($('<li>').text(
+        `[${data.from}] : ${data.msg}` 
+    ))
 })
 socket.on("login_failed",()=>{
     window.alert("Username or Password Wrong")
